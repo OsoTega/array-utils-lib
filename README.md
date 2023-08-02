@@ -405,7 +405,7 @@ array[5] = "mik";
 array[6] = "bo";
 array[7] = "bo";
 
-return array.shift();
+return array.pop();
 
 //expected result is (bo, [example, asas, example, pal, text, mik, bo])
 ```
