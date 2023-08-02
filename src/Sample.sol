@@ -280,6 +280,37 @@ contract Sample {
         return array.pop();
     }
 
+    function exampleTrimStartArray() public pure returns (string[] memory) {
+        string[] memory array = new string[](8);
+        array[3] = "pal";
+        array[4] = "text";
+        array[5] = "mik";
+        array[6] = "bo";
+        array[7] = "bo";
+
+        return array.trimStart();
+    }
+
+    function exampleTrimEndArray() public pure returns (string[] memory) {
+        string[] memory array = new string[](8);
+        array[0] = "example";
+        array[1] = "asas";
+        array[2] = "example";
+        array[3] = "pal";
+
+        return array.trimEnd();
+    }
+
+    function exampleTrimArray() public pure returns (string[] memory) {
+        string[] memory array = new string[](8);
+        array[2] = "example";
+        array[3] = "pal";
+        array[4] = "text";
+        array[5] = "mik";
+
+        return array.trim();
+    }
+
     function exampleLengthArray() public pure returns (uint256) {
         string[] memory array = new string[](8);
         array[0] = "example";

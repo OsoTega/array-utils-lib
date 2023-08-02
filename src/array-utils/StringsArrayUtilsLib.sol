@@ -464,6 +464,67 @@ library StringsArrayUtilsLib {
     }
 
     /*
+     * @dev Removes unnecesary space from the start of the array.
+     * @param array The array to trim.
+     * @return A new array which is trimmed at the start.
+     */
+    function trimStart(
+        string[] memory array
+    ) internal pure returns (string[] memory) {
+        uint256 i = 0;
+        uint256 count = 0;
+        while (i < array.length) {
+            if (
+                keccak256(abi.encodePacked(array[i])) !=
+                keccak256(abi.encodePacked(""))
+            ) {
+                count = i;
+                break;
+            }
+            i++;
+        }
+        string[] memory trimmedArray = subArray(array, count, array.length - 1);
+        return trimmedArray;
+    }
+
+    /*
+     * @dev Removes unnecesary space from the end of the array.
+     * @param array The array to trim.
+     * @return A new array which is trimmed at the end.
+     */
+    function trimEnd(
+        string[] memory array
+    ) internal pure returns (string[] memory) {
+        uint256 i = array.length - 1;
+        uint256 count = 0;
+        while (i >= 0) {
+            if (
+                keccak256(abi.encodePacked(array[i])) !=
+                keccak256(abi.encodePacked(""))
+            ) {
+                count = i;
+                break;
+            }
+            i--;
+        }
+        string[] memory trimmedArray = subArray(array, 0, count);
+        return trimmedArray;
+    }
+
+    /*
+     * @dev Removes unnecesary space from the start and end of the array.
+     * @param array The array to trim.
+     * @return A new array which is trimmed at the start and end.
+     */
+    function trim(
+        string[] memory array
+    ) internal pure returns (string[] memory) {
+        string[] memory startTrim = trimStart(array);
+        string[] memory trimmedArray = trimEnd(startTrim);
+        return trimmedArray;
+    }
+
+    /*
      * @dev Creates a sub array from the array.
      * @param array The array to create a new array.
      * @param start the start of the sub array.

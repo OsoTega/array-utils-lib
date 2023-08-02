@@ -351,6 +351,48 @@ return array.slice(2, 4);
 //expected result is [example, pal, text]
 ```
 
+## Trim array
+The trim function removes unwanted space from the start and end of the array. The trimStart function also and the trimEnd removes spaces from the start and end of the array.
+
+```solidity
+//trimStart
+
+string[] memory array = new string[](8);
+array[3] = "pal";
+array[4] = "text";
+array[5] = "mik";
+array[6] = "bo";
+array[7] = "bo";
+
+return array.trimStart();
+
+//expected result is [pal, text, mik, bo, bo]
+
+//trimEnd
+
+string[] memory array = new string[](8);
+array[0] = "example";
+array[1] = "asas";
+array[2] = "example";
+array[3] = "pal";
+
+return array.trimEnd();
+
+//expected result is [example, asas, example, pal]
+
+//trim
+
+string[] memory array = new string[](8);
+array[2] = "example";
+array[3] = "pal";
+array[4] = "text";
+array[5] = "mik";
+
+return array.trim();
+
+//expected result is [example, pal, text, mik]
+```
+
 ## Reversing an array
 The reverse function reverses the array and returns a new reversed array.
 

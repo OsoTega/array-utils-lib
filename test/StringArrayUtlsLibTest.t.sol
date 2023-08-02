@@ -109,4 +109,32 @@ contract StringArrayUtilsLibTest is Test {
         uint256 a = sample.exampleLengthArray();
         assertEq(a, 8);
     }
+
+    function testTrimStartArray() public {
+        string[] memory a = sample.exampleTrimStartArray();
+        assertEq(a.length, 5);
+        assertEq(a[0], "pal");
+        assertEq(a[1], "text");
+        assertEq(a[2], "mik");
+        assertEq(a[3], "bo");
+        assertEq(a[4], "bo");
+    }
+
+    function testTrimEndArray() public {
+        string[] memory a = sample.exampleTrimEndArray();
+        assertEq(a.length, 4);
+        assertEq(a[0], "example");
+        assertEq(a[1], "asas");
+        assertEq(a[2], "example");
+        assertEq(a[3], "pal");
+    }
+
+    function testTrimArray() public {
+        string[] memory a = sample.exampleTrimArray();
+        assertEq(a.length, 4);
+        assertEq(a[0], "example");
+        assertEq(a[1], "pal");
+        assertEq(a[2], "text");
+        assertEq(a[3], "mik");
+    }
 }
